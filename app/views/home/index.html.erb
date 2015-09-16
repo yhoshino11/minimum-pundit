@@ -1,2 +1,11 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<% if user_signed_in? %>
+  <%= link_to 'Create Task', new_user_task_path(user_id: current_user) %>
+<% end %>
+
+<% @tasks.each do |task| %>
+  <p>
+    <%= task.name %> : <%= task.public %><br />
+    <%= link_to 'Edit', edit_user_task_path(user_id: current_user, id: task) %>
+    <%= link_to 'Destroy', user_task_path(user_id: current_user, id: task), method: :delete %>
+  </p>
+<% end %>

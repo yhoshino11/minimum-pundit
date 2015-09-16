@@ -1,0 +1,5 @@
+<%= form_for(@task, url: user_task_path(user_id: current_user, id: @task), method: :patch) do |f| %>
+  <%= f.text_field :name, placeholder: 'Task Name here...' %>
+  <%= f.check_box :public %>
+  <%= f.submit 'Create' %>
+<% end %>
