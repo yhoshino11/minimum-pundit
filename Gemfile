@@ -7,6 +7,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
+gem 'pundit'
 
 group :development do
   gem 'annotate'

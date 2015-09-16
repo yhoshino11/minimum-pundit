@@ -5,7 +5,9 @@
 <% @tasks.each do |task| %>
   <p>
     <%= task.name %> : <%= task.public %><br />
-    <%= link_to 'Edit', edit_user_task_path(user_id: current_user, id: task) %>
-    <%= link_to 'Destroy', user_task_path(user_id: current_user, id: task), method: :delete %>
+    <% if policy(task).owner? %>
+      <%= link_to 'Edit', edit_user_task_path(user_id: current_user, id: task) %>
+      <%= link_to 'Destroy', user_task_path(user_id: current_user, id: task), method: :delete %>
+    <% end %>
   </p>
 <% end %>

@@ -9,10 +9,12 @@ class TasksController < ApplicationController
 
   def new
     @task = current_user.tasks.new
+    authorize @task, :owner?
   end
 
   def create
     @task = current_user.tasks.new(task_params)
+    authorize @task, :owner?
     if @task.save
       redirect_to root_path
     else
@@ -22,10 +24,12 @@ class TasksController < ApplicationController
 
   def edit
     @task = Task.find(params[:id])
+    authorize @task, :owner?
   end
 
   def update
     @task = Task.find(params[:id])
+    authorize @task, :owner?
     if @task.update(task_params)
       redirect_to root_path
     else
@@ -35,6 +39,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task = Task.find(params[:id])
+    authorize @task, :owner?
     @task.destroy
     redirect_to root_path
   end
