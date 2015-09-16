@@ -6,6 +6,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'devise'
 
 group :development do
   gem 'annotate'
